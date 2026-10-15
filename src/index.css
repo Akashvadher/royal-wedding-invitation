@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-cinzel {
+    font-family: 'Cinzel', serif;
+  }
+  .font-script {
+    font-family: 'Great Vibes', cursive;
+  }
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+  .font-sans-clean {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* Damask / Embossed Floral Brocade Texture for Envelope */
+.bg-envelope-damask {
+  background-color: #d1124d;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255, 105, 150, 0.28) 0%, rgba(136, 12, 53, 0.95) 100%),
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.04) 0px, rgba(255, 255, 255, 0.04) 2px, transparent 2px, transparent 16px),
+    repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.06) 0px, rgba(0, 0, 0, 0.06) 2px, transparent 2px, transparent 16px);
+}
+
+/* Shimmering Gold Foil Gradient */
+.gold-foil-text {
+  background: linear-gradient(135deg, #dfa938 0%, #fae588 35%, #b38328 70%, #fceda2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border {
+  border-image: linear-gradient(135deg, #c9933b, #fef0a4, #b27c29, #f7df8d) 1;
+}
+
+/* Deckle Edge / Torn Parchment Paper Effect */
+.torn-edge-top {
+  clip-path: polygon(
+    0% 0%, 5% 4px, 10% 1px, 15% 6px, 20% 2px, 25% 5px, 30% 1px, 35% 6px, 
+    40% 2px, 45% 5px, 50% 1px, 55% 6px, 60% 2px, 65% 5px, 70% 1px, 75% 6px, 
+    80% 2px, 85% 5px, 90% 1px, 95% 5px, 100% 0%, 
+    100% 100%, 0% 100%
+  );
+}
+
+.torn-edge-bottom {
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 98%, 
+    95% 100%, 90% 97%, 85% 100%, 80% 96%, 75% 99%, 70% 96%, 65% 99%, 60% 96%, 
+    55% 100%, 50% 96%, 45% 99%, 40% 96%, 35% 100%, 30% 97%, 25% 99%, 20% 96%, 
+    15% 100%, 10% 97%, 5% 99%, 0% 97%
+  );
+}
+
+/* Wax Seal 3D Styling */
+.wax-seal-shadow {
+  box-shadow: 
+    0 12px 28px -6px rgba(50, 0, 15, 0.6),
+    0 4px 10px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.6),
+    inset 0 -3px 6px rgba(110, 50, 30, 0.4);
+}
+
+/* Sparkle shimmer animation */
+@keyframes gold-sparkle {
+  0%, 100% { opacity: 0.4; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.animate-gold-sparkle {
+  animation: gold-sparkle 2.4s ease-in-out infinite;
+}
+
+/* Soft breathing animation for the prompt tap indicator */
+@keyframes tap-pulse {
+  0%, 100% { opacity: 0.85; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
+}
+
+.animate-tap-prompt {
+  animation: tap-pulse 2s ease-in-out infinite;
+}
+
+/* Custom smooth scroll styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #2a111a;
+}
+::-webkit-scrollbar-thumb {
+  background: #9d3156;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #bf3f6b;
+}
