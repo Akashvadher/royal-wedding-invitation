@@ -1,0 +1,6 @@
+{
+  "name": "Royal Wedding Invitation",
+  "description": "An interactive, animated royal wedding invitation with wax seal opening, scratch-to-reveal save the date, live countdown, timeline, venue guide, and wardrobe planner.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

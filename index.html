@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Royal Wedding Invitation | Ritesh &amp; Reet</title>
+  <meta name="description" content="An interactive, animated royal wedding invitation with wax seal opening, scratch-to-reveal save the date, live countdown, timeline, venue guide, and wardrobe planner." />
+  <meta property="og:title" content="Royal Wedding Invitation" />
+  <meta property="og:description" content="An interactive royal wedding invitation." />
+  
+  <!-- Pure Standalone Stylesheet (No frameworks required) -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- Floating Audio & Control Bar -->
+  <div class="top-controls">
+    <button id="audio-toggle-btn" class="floating-btn" title="Toggle Wedding Music">
+      <div class="music-equalizer" style="display: none;">
+        <span></span><span></span><span></span>
+      </div>
+      <span class="audio-label">Music Off</span>
+    </button>
+  </div>
+
+  <!-- ========================================================================
+       1. ENVELOPE SCREEN WITH 3D WAX SEAL (MATCHING VIDEO EXACTLY)
+       ======================================================================== -->
+  <div id="envelope-screen">
+    <div id="envelope-wrapper" class="envelope-wrapper">
+      
+      <!-- Embossed Damask Wallpaper Texture -->
+      <div class="envelope-damask-bg"></div>
+
+      <!-- Top Flap (Folds down) -->
+      <div class="flap-top">
+        <svg viewBox="0 0 500 280" preserveAspectRatio="none">
+          <path d="M0 0 L500 0 L250 280 Z" fill="#c21045" />
+          <path d="M0 0 L250 280 L500 0" stroke="#eab308" stroke-width="4" fill="none" />
+          <path d="M10 2 L250 270 L490 2" stroke="#fef08a" stroke-width="1.5" stroke-dasharray="5 3" fill="none" opacity="0.8" />
+        </svg>
+      </div>
+
+      <!-- Left Flap -->
+      <div class="flap-left">
+        <svg viewBox="0 0 250 560" preserveAspectRatio="none" style="width:100%; height:100%;">
+          <path d="M0 0 L250 280 L0 560 Z" fill="#b00d3d" opacity="0.6" />
+          <path d="M0 0 L250 280 L0 560" stroke="#ca8a04" stroke-width="2.5" fill="none" opacity="0.5" />
+        </svg>
+      </div>
+
+      <!-- Right Flap -->
+      <div class="flap-right">
+        <svg viewBox="0 0 250 560" preserveAspectRatio="none" style="width:100%; height:100%;">
+          <path d="M250 0 L0 280 L250 560 Z" fill="#b00d3d" opacity="0.6" />
+          <path d="M250 0 L0 280 L250 560" stroke="#ca8a04" stroke-width="2.5" fill="none" opacity="0.5" />
+        </svg>
+      </div>
+
+      <!-- Bottom Flap -->
+      <div class="flap-bottom">
+        <svg viewBox="0 0 500 280" preserveAspectRatio="none" style="width:100%; height:100%;">
+          <path d="M0 280 L250 0 L500 280 Z" fill="#aa0c3b" opacity="0.75" />
+          <path d="M0 280 L250 0 L500 280" stroke="#ca8a04" stroke-width="3" fill="none" />
+        </svg>
+      </div>
+
+      <!-- Center 3D Monogram Wax Seal -->
+      <div class="seal-container">
+        <button id="wax-seal-btn" class="wax-seal" title="Tap on seal to open invitation" aria-label="Open Invitation">
+          <div class="seal-ring-dashed"></div>
+          <div class="seal-ring-inner"></div>
+          <div id="wax-seal-initials" class="seal-monogram">
+            R<span>&amp;</span>R
+          </div>
+        </button>
+      </div>
+
+      <!-- Prompt Indicator -->
+      <div class="seal-prompt-box">
+        <div class="seal-prompt">
+          <span>✦</span>
+          <span>TAP ON SEAL · TO OPEN THE INVITATION</span>
+          <span>✦</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       2. REVEALED WEDDING INVITATION STATIONERY
+       ======================================================================== -->
+  <main id="invitation-card">
+    
+    <!-- Top Action Bar -->
+    <div class="card-nav-bar">
+      <button id="btn-reopen-envelope" type="button">✉️ View Envelope</button>
+      <div style="display: flex; gap: 8px;">
+        <button id="btn-open-customize" type="button">✏️ Edit Details</button>
+        <button id="btn-share-invite" type="button" style="background:#831843; color:#fff;">🔗 Share</button>
+      </div>
+    </div>
+
+    <!-- Main Parchment Paper Sheet -->
+    <div class="paper-sheet">
+      <div class="paper-inner-border"></div>
+      <div class="paper-dashed-border"></div>
+
+      <!-- SECTION 1: Auspicious Invocation & Couple Names -->
+      <div class="section-padding border-divider">
+        <div class="blessing-ganesh">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="ganeshG" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#DF9B28" />
+                <stop offset="50%" stop-color="#FED876" />
+                <stop offset="100%" stop-color="#B3781A" />
+              </linearGradient>
+            </defs>
+            <path d="M50 14 L58 30 L53 30 L60 38 L40 38 L47 30 L42 30 Z" fill="url(#ganeshG)" />
+            <circle cx="50" cy="22" r="3" fill="#881337" />
+            <path d="M34 42 C20 42 22 62 35 60 C38 65 42 70 48 78 C50 82 56 82 55 76 C53 70 51 60 56 56 C60 52 64 56 68 62 C78 62 80 44 66 42 C60 40 40 40 34 42 Z" stroke="url(#ganeshG)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M48 42 L52 42 M47 46 L53 46 M50 38 L50 49" stroke="#881337" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M50 64 C50 72 58 74 60 70 C61 67 57 65 54 67" stroke="url(#ganeshG)" stroke-width="3" stroke-linecap="round" />
+            <circle cx="68" cy="68" r="4" fill="url(#ganeshG)" />
+          </svg>
+          <span class="blessing-title">॥ श्री गणेशाय नमः ॥</span>
+        </div>
+
+        <div class="tagline-sub">TWO HEARTS, TWO SOULS</div>
+        <div class="tagline-sub">BOUND TOGETHER IN LOVE FOREVER</div>
+
+        <p class="request-line">
+          WE REQUEST THE PLEASURE OF YOUR COMPANY AS WE CELEBRATE THE MARRIAGE OF OUR CHILDREN
+        </p>
+
+        <!-- GROOM -->
+        <h1 class="person-name groom-name-text">RITESH</h1>
+        <div class="person-parents groom-parents-text">S/O MR. RAJESH &amp; MRS. SUNITA MALHOTRA</div>
+
+        <!-- WITH -->
+        <div class="with-flourish">
+          <div class="line"></div>
+          <span>with</span>
+          <div class="line reverse"></div>
+        </div>
+
+        <!-- BRIDE -->
+        <h1 class="person-name bride-name-text">REET</h1>
+        <div class="person-parents bride-parents-text">D/O MR. RAJENDRA &amp; MRS. KAVITA VERMA</div>
+
+        <!-- Mandap Illustration -->
+        <div style="max-width: 500px; margin: 18px auto 0;">
+          <svg viewBox="0 0 600 240" style="width: 100%; height: auto;" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="gArch" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#DF9B28" /><stop offset="50%" stop-color="#FED876" /><stop offset="100%" stop-color="#B3781A" />
+              </linearGradient>
+            </defs>
+            <path d="M60 220 V110 Q60 50 180 40 Q300 30 420 40 Q540 50 540 110 V220" stroke="url(#gArch)" stroke-width="3" stroke-dasharray="4 2" />
+            <path d="M230 70 Q300 15 370 70 L380 90 H220 Z" fill="#faeed9" stroke="url(#gArch)" stroke-width="2.5" />
+            <rect x="120" y="80" width="16" height="140" rx="3" fill="#faeed9" stroke="url(#gArch)" stroke-width="2" />
+            <rect x="210" y="90" width="16" height="130" rx="3" fill="#faeed9" stroke="url(#gArch)" stroke-width="2" />
+            <rect x="374" y="90" width="16" height="130" rx="3" fill="#faeed9" stroke="url(#gArch)" stroke-width="2" />
+            <rect x="464" y="80" width="16" height="140" rx="3" fill="#faeed9" stroke="url(#gArch)" stroke-width="2" />
+            <line x1="300" y1="88" x2="300" y2="120" stroke="url(#gArch)" stroke-width="2" />
+            <circle cx="300" cy="125" r="5" fill="#f59e0b" />
+            <rect x="250" y="195" width="100" height="25" rx="4" fill="#fde68a" stroke="url(#gArch)" stroke-width="2" />
+            <path d="M285 195 Q295 170 300 178 Q305 170 315 195 Z" fill="#ea580c" />
+            <path d="M128 95 Q218 135 300 115 Q382 135 472 95" stroke="#e11d48" stroke-width="3.5" stroke-dasharray="6 4" stroke-linecap="round" />
+            <path d="M130 115 Q218 150 300 135 Q382 150 470 115" stroke="#f59e0b" stroke-width="3" stroke-dasharray="5 3" stroke-linecap="round" />
+            <path d="M40 220 H560 L540 236 H60 Z" fill="#991b1b" stroke="url(#gArch)" stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- SECTION 2: Save The Date Scratch Cards -->
+      <div class="scratch-section">
+        <h2 class="section-script-title">Save The Date</h2>
+        <div class="section-caps-sub">FOR THE WEDDING CELEBRATION</div>
+
+        <div class="scratch-grid">
+          <!-- Day -->
+          <div class="scratch-card-item">
+            <div class="scratch-frame">
+              <div class="scratch-revealed-layer">
+                <span id="scratch-val-day" class="val">24</span>
+                <span class="sub">DAY</span>
+              </div>
+              <canvas id="scratch-canvas-day" class="scratch-canvas" width="112" height="112"></canvas>
+            </div>
+            <span class="scratch-status-label">Tap &amp; Scratch</span>
+          </div>
+
+          <!-- Month -->
+          <div class="scratch-card-item">
+            <div class="scratch-frame">
+              <div class="scratch-revealed-layer">
+                <span id="scratch-val-month" class="val">DEC</span>
+                <span class="sub">MONTH</span>
+              </div>
+              <canvas id="scratch-canvas-month" class="scratch-canvas" width="112" height="112"></canvas>
+            </div>
+            <span class="scratch-status-label">Tap &amp; Scratch</span>
+          </div>
+
+          <!-- Year -->
+          <div class="scratch-card-item">
+            <div class="scratch-frame">
+              <div class="scratch-revealed-layer">
+                <span id="scratch-val-year" class="val">2026</span>
+                <span class="sub">YEAR</span>
+              </div>
+              <canvas id="scratch-canvas-year" class="scratch-canvas" width="112" height="112"></canvas>
+            </div>
+            <span class="scratch-status-label">Tap &amp; Scratch</span>
+          </div>
+        </div>
+
+        <div>
+          <button id="btn-scratch-all" type="button" class="scratch-helper-btn">
+            ✨ Scratch All at Once
+          </button>
+        </div>
+      </div>
+
+      <!-- SECTION 3: Live Countdown -->
+      <div class="countdown-section">
+        <h3 class="countdown-title">The wedding begins in</h3>
+        <div class="countdown-grid">
+          <div class="timer-box">
+            <span id="timer-days" class="num">00</span>
+            <span class="unit">DAYS</span>
+          </div>
+          <div class="timer-box">
+            <span id="timer-hours" class="num">00</span>
+            <span class="unit">HOURS</span>
+          </div>
+          <div class="timer-box">
+            <span id="timer-minutes" class="num">00</span>
+            <span class="unit">MINUTES</span>
+          </div>
+          <div class="timer-box">
+            <span id="timer-seconds" class="num">00</span>
+            <span class="unit">SECONDS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 4: Schedule of Events -->
+      <div class="timeline-section">
+        <h2 class="section-script-title">Schedule of Events</h2>
+        <div class="section-caps-sub">A Celebration of Love &amp; Traditions</div>
+
+        <div class="timeline-tree">
+          <div class="timeline-line"></div>
+
+          <!-- Haldi -->
+          <div class="timeline-row left">
+            <div class="timeline-content">
+              <div class="timeline-badge">23 DEC · 11:00 AM</div>
+              <div class="timeline-title">HALDI</div>
+              <div class="timeline-desc">A morning of sunshine &amp; love</div>
+            </div>
+            <div class="timeline-node"></div>
+          </div>
+
+          <!-- Sangeet -->
+          <div class="timeline-row right">
+            <div class="timeline-content">
+              <div class="timeline-badge">23 DEC · 7:00 PM</div>
+              <div class="timeline-title">SANGEET &amp; ENGAGEMENT</div>
+              <div class="timeline-desc">Followed by dinner</div>
+            </div>
+            <div class="timeline-node"></div>
+          </div>
+
+          <!-- Mayra -->
+          <div class="timeline-row left">
+            <div class="timeline-content">
+              <div class="timeline-badge">24 DEC · 9:00 AM</div>
+              <div class="timeline-title">MAYRA</div>
+              <div class="timeline-desc">Blessings from the family</div>
+            </div>
+            <div class="timeline-node"></div>
+          </div>
+
+          <!-- Baraat -->
+          <div class="timeline-row right">
+            <div class="timeline-content">
+              <div class="timeline-badge">24 DEC · 4:00 PM</div>
+              <div class="timeline-title">BARAAT</div>
+              <div class="timeline-desc">The celebration begins</div>
+            </div>
+            <div class="timeline-node"></div>
+          </div>
+
+          <!-- Varmala & Phera -->
+          <div class="timeline-row left">
+            <div class="timeline-content">
+              <div class="timeline-badge">24 DEC · 6:00 PM</div>
+              <div class="timeline-title">VARMALA &amp; PHERA</div>
+              <div class="timeline-desc">Two hearts, one journey</div>
+            </div>
+            <div class="timeline-node"></div>
+          </div>
+
+          <!-- Reception -->
+          <div class="timeline-row right">
+            <div class="timeline-content">
+              <div class="timeline-badge">24 DEC · 9:00 PM</div>
+              <div class="timeline-title">RECEPTION</div>
+              <div class="timeline-desc">Dinner &amp; dancing</div>
+            </div>
+            <div class="timeline-node"></div>
+          </div>
+        </div>
+
+        <button id="btn-add-calendar" type="button" class="btn-secondary" style="margin-top: 10px;">
+          📅 Add to Calendar (.ics)
+        </button>
+      </div>
+
+      <!-- SECTION 5: Venue -->
+      <div class="venue-section">
+        <div class="section-caps-sub" style="margin-bottom: 4px;">
+          UNDER THE JAIPUR SKY, SURROUNDED BY THOSE WE LOVE MOST
+        </div>
+        <h2 class="section-script-title" style="font-size: 38px;">We're celebrating at</h2>
+
+        <!-- Hotel SVG Illustration -->
+        <div style="max-width: 520px; margin: 16px auto;">
+          <svg viewBox="0 0 640 220" style="width:100%; height:auto;" fill="none">
+            <rect width="640" height="220" fill="#fff8f0" rx="8" />
+            <rect x="140" y="80" width="360" height="110" fill="#deb887" stroke="#c28e35" stroke-width="2" rx="2" />
+            <path d="M290 60 Q320 30 350 60 H290 Z" fill="#deb887" stroke="#c28e35" stroke-width="2" />
+            <path d="M150 68 Q170 42 190 68 H150 Z" fill="#deb887" stroke="#c28e35" stroke-width="1.5" />
+            <path d="M450 68 Q470 42 490 68 H450 Z" fill="#deb887" stroke="#c28e35" stroke-width="1.5" />
+            <rect x="290" y="130" width="60" height="60" fill="#381907" stroke="#dfa938" stroke-width="2" />
+            <path d="M290 145 Q320 120 350 145" stroke="#dfa938" stroke-width="2" fill="none" />
+            <circle cx="320" cy="155" r="7" fill="#fef08a" />
+            <path d="M70 200 Q75 140 60 90" stroke="#78350f" stroke-width="4" stroke-linecap="round" />
+            <path d="M60 90 Q30 70 20 85 M60 90 Q50 60 40 60 M60 90 Q75 60 85 65" stroke="#15803d" stroke-width="3" stroke-linecap="round" />
+            <path d="M570 200 Q565 140 580 90" stroke="#78350f" stroke-width="4" stroke-linecap="round" />
+            <path d="M580 90 Q550 70 540 85 M580 90 Q570 60 560 60 M580 90 Q595 60 605 65" stroke="#15803d" stroke-width="3" stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <h3 id="venue-address-el" class="venue-address-title">RADISSON BLU HOTEL</h3>
+        <p id="venue-city-el" class="venue-address-text">
+          PLOT NO. 5 &amp; 6, AIRPORT PLAZA, TONK RD, DURGAPURA, JAIPUR, RAJASTHAN 302018
+        </p>
+
+        <a id="venue-maps-link" href="https://maps.google.com/?q=Radisson+Blu+Hotel+Airport+Plaza+Tonk+Rd+Jaipur" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          📍 FIND YOUR WAY
+        </a>
+      </div>
+
+      <!-- SECTION 6: Wardrobe Planner -->
+      <div class="wardrobe-section">
+        <div class="section-caps-sub" style="margin-bottom: 2px;">DRESS FOR THE MOMENTS</div>
+        <h2 class="section-script-title">Wardrobe Planner</h2>
+
+        <div class="wardrobe-grid">
+          <!-- Haldi -->
+          <div class="wardrobe-card">
+            <div>
+              <div class="wardrobe-tag">HALDI</div>
+              <div class="wardrobe-theme">PASTEL SHADES</div>
+              <div class="wardrobe-attire">Indian Traditional</div>
+              <div class="swatch-group">
+                <span class="swatch-dot" style="background:#FDE047;"></span>
+                <span class="swatch-dot" style="background:#FBBF24;"></span>
+                <span class="swatch-dot" style="background:#FED7AA;"></span>
+              </div>
+            </div>
+            <div style="font-size:24px;">☀️</div>
+          </div>
+
+          <!-- Sangeet -->
+          <div class="wardrobe-card">
+            <div>
+              <div class="wardrobe-tag">SANGEET</div>
+              <div class="wardrobe-theme">GLITZ &amp; GLAM</div>
+              <div class="wardrobe-attire">Indo Western</div>
+              <div class="swatch-group">
+                <span class="swatch-dot" style="background:#1E3A8A;"></span>
+                <span class="swatch-dot" style="background:#065F46;"></span>
+                <span class="swatch-dot" style="background:#D97706;"></span>
+              </div>
+            </div>
+            <div style="font-size:24px;">✨</div>
+          </div>
+
+          <!-- Wedding -->
+          <div class="wardrobe-card">
+            <div>
+              <div class="wardrobe-tag">WEDDING</div>
+              <div class="wardrobe-theme">ROYAL TRADITIONAL</div>
+              <div class="wardrobe-attire">Regal Ethnic</div>
+              <div class="swatch-group">
+                <span class="swatch-dot" style="background:#881337;"></span>
+                <span class="swatch-dot" style="background:#991B1B;"></span>
+                <span class="swatch-dot" style="background:#D97706;"></span>
+              </div>
+            </div>
+            <div style="font-size:24px;">👑</div>
+          </div>
+
+          <!-- Reception -->
+          <div class="wardrobe-card">
+            <div>
+              <div class="wardrobe-tag">RECEPTION</div>
+              <div class="wardrobe-theme">ELEGANT SOIREE</div>
+              <div class="wardrobe-attire">Western Formal / Chic</div>
+              <div class="swatch-group">
+                <span class="swatch-dot" style="background:#0F172A;"></span>
+                <span class="swatch-dot" style="background:#334155;"></span>
+                <span class="swatch-dot" style="background:#E2E8F0;"></span>
+              </div>
+            </div>
+            <div style="font-size:24px;">🥂</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 7: Blessings & Closing -->
+      <div class="closing-section">
+        <p class="closing-quote">
+          "We can't wait to celebrate with you.<br>Your presence will make our day all the more special."
+        </p>
+
+        <div style="margin: 24px 0;">
+          <div class="section-caps-sub" style="margin-bottom: 2px;">WITH LOVE &amp; BLESSINGS</div>
+          <h3 id="family-title-el" class="family-title">The Malhotra &amp; Verma Families</h3>
+          <div class="family-subtitle">Two families, one beautiful beginning — see you there</div>
+        </div>
+
+        <div class="action-button-group">
+          <button id="btn-open-rsvp" type="button" class="btn-primary">
+            💌 Send RSVP
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 24px; font-size: 11px; color: rgba(254, 240, 138, 0.6);">
+      Royal Wedding Stationery • Fully Responsive HTML, CSS &amp; JS
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       MODAL: CUSTOMIZE INVITE
+       ======================================================================== -->
+  <div id="modal-customize" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Customize Wedding Details</h3>
+        <button id="btn-close-customize" class="close-btn">&times;</button>
+      </div>
+
+      <form id="form-customize">
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label>Groom Name</label>
+            <input id="edit-groom-name" type="text" required />
+          </div>
+          <div class="form-group">
+            <label>Bride Name</label>
+            <input id="edit-bride-name" type="text" required />
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label>Groom Parents</label>
+            <input id="edit-groom-parents" type="text" />
+          </div>
+          <div class="form-group">
+            <label>Bride Parents</label>
+            <input id="edit-bride-parents" type="text" />
+          </div>
+        </div>
+
+        <div class="form-grid-3">
+          <div class="form-group">
+            <label>Day</label>
+            <input id="edit-day" type="text" />
+          </div>
+          <div class="form-group">
+            <label>Month</label>
+            <input id="edit-month" type="text" />
+          </div>
+          <div class="form-group">
+            <label>Year</label>
+            <input id="edit-year" type="text" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Venue Name</label>
+          <input id="edit-venue" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label>Address &amp; City</label>
+          <input id="edit-address" type="text" />
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
+          <button type="submit" class="btn-primary">Save &amp; Update Invite</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL: RSVP
+       ======================================================================== -->
+  <div id="modal-rsvp" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Wedding RSVP</h3>
+        <button id="btn-close-rsvp" class="close-btn">&times;</button>
+      </div>
+
+      <form id="form-rsvp">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input id="rsvp-guest-name" type="text" placeholder="e.g. Rahul &amp; Priya Sharma" required />
+        </div>
+
+        <div class="form-group">
+          <label>Will You Attend?</label>
+          <select id="rsvp-attending">
+            <option value="yes">Joyfully Accept (Yes!)</option>
+            <option value="regret">Regretfully Decline</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Number of Guests</label>
+          <select id="rsvp-count">
+            <option>1 Guest</option>
+            <option selected>2 Guests</option>
+            <option>3 Guests</option>
+            <option>4+ Guests</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Warm Wishes</label>
+          <textarea id="rsvp-wishes" rows="2" placeholder="Leave a sweet message for the couple..."></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
+          <button type="submit" class="btn-primary">Submit RSVP</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Pure Standalone Script (No frameworks required) -->
+  <script src="./script.js"></script>
+</body>
+</html>
